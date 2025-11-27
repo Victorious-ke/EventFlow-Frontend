@@ -1,15 +1,24 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+
+// Import mock data (replac with API calls later)
+
 import events from "../api/events.json";
 import users from "../api/users.json";
 import rsvps from "../api/rsvps.json";
 import comments from "../api/comments.json";
 
 const EventDetail = () => {
+    // Extract event ID from route parameters
+
   const { id } = useParams();
+
+    // State for selected event, RSVP list, and comments
   const [event, setEvent] = useState(null);
   const [eventRSVPs, setEventRSVPs] = useState([]);
   const [eventComments, setEventComments] = useState([]);
+
+    // Load event details, RSVPs, and comments when the component mounts or ID changes
 
   useEffect(() => {
     const selectedEvent = events.find((e) => e.id === parseInt(id));
